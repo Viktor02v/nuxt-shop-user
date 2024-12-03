@@ -8,10 +8,11 @@ const menuStore = useMenuStore();
 		'md:text-[20px]': menuStore.isMenuOpen,
 		'md:text-[30px]': !menuStore.isMenuOpen
 	}" class="text-right text-[20px] md:text-4xl">
-		<slot />
-		<span class="">|</span>
+			<slot />
+			<span class="">|</span>
 	</h1>
 </template>
 
 
-<style scoped></style>
+<style scoped>
+</style>

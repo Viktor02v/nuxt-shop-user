@@ -19,4 +19,5 @@ useSeoMeta({
 
 
 
-<style scoped></style>
+<style scoped>
+</style>
