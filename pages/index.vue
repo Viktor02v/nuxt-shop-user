@@ -2,14 +2,13 @@
 
 </script>
 <template>
-	<div class="p-5 w-full h-[100vh]">
-		<h1 class="text-4xl">Hey there</h1>
-
+	<div class="md:p-10 w-full h-[100vh]">
+		<LayoutTitle>
+			| Overview 
+		</LayoutTitle>
 	</div>
 </template>
 
 
 
-<style scoped>
-
-</style>
+<style scoped></style>
