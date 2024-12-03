@@ -11,29 +11,29 @@ export const MENU_DATA:MenuData[] = [
 		url:'/',
 	},
 	{
-		name:'Customers',
+		name:'Products',
 		icon:'fluent:receipt-28-regular',
-		url:'/customers',
+		url:'/products',
+	},
+	{
+		icon: 'line-md:heart',
+		name:'Favorites',
+		url:'/favorites'
+	},
+	{
+		icon: 'solar:cart-linear',
+		name:'Cart',
+		url:'/cart'
+	},
+	{
+		name:'Orders',
+		icon:'ep:goods',
+		url:'/orders',
 	},
 	{
 		name:'Payments',
 		icon:'ph:contactless-payment',
 		url:'/payments',
-	},
-	{
-		name:'Products',
-		icon:'ep:goods',
-		url:'/products',
-	},
-	{
-		icon: 'mingcute:group-line',
-		name:'Orders',
-		url:'/orders'
-	},
-	{
-		icon: 'fluent:person-feedback-48-regular',
-		name:'Feedback',
-		url:'/feedback'
 	},
 	{
 		icon: 'radix-icons:gear',
