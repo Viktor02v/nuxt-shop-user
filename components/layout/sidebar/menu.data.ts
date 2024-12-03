@@ -11,10 +11,10 @@ export const MENU_DATA:MenuData[] = [
 		url:'/',
 	},
 	{
-		name:'Products',
+		name:'Collections',
 		icon:'fluent:receipt-28-regular',
-		url:'/products',
-	},
+		url:'/collections',
+	}, 
 	{
 		icon: 'line-md:heart',
 		name:'Favorites',
