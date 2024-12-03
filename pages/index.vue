@@ -12,7 +12,7 @@ useSeoMeta({
 
 		<LayoutStepper />
 
-		<section id="step-1" class="w-full mb-20">
+		<section id="step-1" class="w-full mb-[80px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Go to Collections</h1>
 			<LayoutLandingPageInfoBlock imgSrc="/overview/to-collections.png">
 				<template #content>
@@ -37,7 +37,7 @@ useSeoMeta({
 			</LayoutLandingPageInfoBlock>
 		</section>
 
-		<section id="step-2" class="w-full mb-20">
+		<section id="step-2" class="w-full mb-[80px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Check Your Cart</h1>
 			<LayoutLandingPageInfoBlock2 imgSrc="/overview/to-cart.png">
 				<template #content>
@@ -68,10 +68,36 @@ useSeoMeta({
 			</LayoutLandingPageInfoBlock2>
 		</section>
 
+		<section id="step-3" class="w-full pb-20">
+			<h1 class="font-bold text-center mb-10 text-4xl">Make Order</h1>
+			<LayoutLandingPageInfoBlock3 imgSrc="/overview/to-orders.png">
+				<template #content>
+					<p
+						class="self-start text-lg md:text-xl text-white font-light leading-relaxed bg-gradient-to-r from-[#020817] to-[#0F172A] p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out flex items-center">
+						Your selections are ready to take the next step toward becoming a part of your life. Transition
+						seamlessly to the orders section, where every detail of your purchase is carefully tracked for your
+						peace of mind. From processing to shipment, stay informed about the status of your items with
+						real-time updates and intuitive navigation. This is your hub for reviewing order details, tracking
+						shipments, and managing any adjustments with ease. Experience the confidence of knowing that every
+						purchase is handled with precision and care. Your journey continues here, bringing you closer to
+						making your selections truly yours.
+					</p>
+				</template>
+				<template #button>
+					<UiButton
+						class="h-full text-white text-2xl bg-gradient-to-r from-[#020817] to-[#0F172A] hover:scale-105 transition-transform duration-300 ease-in-out">
+						<NuxtLink to="/orders" class="flex items-center gap-2">
+							<p>Make Order</p>
+							<Icon name="line-md:arrow-right" size="25" />
+						</NuxtLink>
+					</UiButton>
+				</template>
+			</LayoutLandingPageInfoBlock3>
+		</section>
+
 	</div>
 </template>
 
 
 
-<style scoped>
-</style>
+<style scoped></style>
