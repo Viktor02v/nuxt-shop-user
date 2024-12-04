@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { useStepperStore } from "@/store/stepper.store"
 
 useSeoMeta({
 	title: 'Overview | Nuxt-Shop'
 })
+
 </script>
+
 <template>
 	<div class="md:p-10 md:pl-[200px] relative z-0 w-full h-[100vh]">
 		<LayoutTitle class="flex transition-all mb-10 duration-300 items-center justify-end gap-2">
@@ -12,7 +15,7 @@ useSeoMeta({
 
 		<LayoutStepper />
 
-		<section id="step-1" class="w-full mb-[80px]">
+		<section id="step-1" class="w-full mb-[80px] scroll-mt-[100px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Go to Collections</h1>
 			<LayoutLandingPageInfoBlock imgSrc="/overview/to-collections.png">
 				<template #content>
@@ -37,7 +40,7 @@ useSeoMeta({
 			</LayoutLandingPageInfoBlock>
 		</section>
 
-		<section id="step-2" class="w-full mb-[80px]">
+		<section id="step-2" class="w-full mb-[80px] scroll-mt-[100px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Check Your Cart</h1>
 			<LayoutLandingPageInfoBlock2 imgSrc="/overview/to-cart.png">
 				<template #content>
