@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import { useStepperStore } from "@/store/stepper.store"
-
+import { useStepNavigation } from "@/components/layout/landingPage/useStepNavigation";
 useSeoMeta({
 	title: 'Overview | Nuxt-Shop'
 })
-
+const { activeStep, handleStepChange } = useStepNavigation();
 </script>
 
 <template>
-	<div class="md:p-10 md:pl-[200px] relative z-0 w-full h-[100vh]">
+	<div class="md:p-10 md:pl-[150px] relative z-0 w-full h-[100vh]">
 		<LayoutTitle class="flex transition-all mb-10 duration-300 items-center justify-end gap-2">
 			Overview
 		</LayoutTitle>
 
 		<LayoutStepper />
 
-		<section id="step-1" class="w-full mb-[80px] scroll-mt-[100px]">
+		<section id="step-1" :class="{ 'active': activeStep === 1, 'scale-100': activeStep !== 1 }"
+			class="w-full mb-[80px] transition-all duration-500 ease-in-out scroll-mt-[100px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Go to Collections</h1>
 			<LayoutLandingPageInfoBlock imgSrc="/overview/to-collections.png">
 				<template #content>
@@ -40,7 +41,9 @@ useSeoMeta({
 			</LayoutLandingPageInfoBlock>
 		</section>
 
-		<section id="step-2" class="w-full mb-[80px] scroll-mt-[100px]">
+		<section id="step-2"
+			:class="{ 'active': activeStep === 2, 'scale-100': activeStep !== 2 }"
+			class="w-full mb-[80px] transition-all duration-500  scroll-mt-[150px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Check Your Cart</h1>
 			<LayoutLandingPageInfoBlock2 imgSrc="/overview/to-cart.png">
 				<template #content>
@@ -71,7 +74,9 @@ useSeoMeta({
 			</LayoutLandingPageInfoBlock2>
 		</section>
 
-		<section id="step-3" class="w-full pb-20">
+		<section id="step-3"
+			:class="{ 'active': activeStep === 3, 'scale-100': activeStep !== 3 }"
+			class="w-full transition-all duration-500">
 			<h1 class="font-bold text-center mb-10 text-4xl">Make Order</h1>
 			<LayoutLandingPageInfoBlock3 imgSrc="/overview/to-orders.png">
 				<template #content>
@@ -103,4 +108,8 @@ useSeoMeta({
 
 
 
-<style scoped></style>
+<style scoped>
+.active {
+	@apply transform scale-105 bg-gradient-to-r from-[#131e36] rounded to-[#020817] p-10;
+}
+</style>
