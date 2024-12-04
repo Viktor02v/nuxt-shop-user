@@ -11,9 +11,9 @@ export const MENU_DATA:MenuData[] = [
 		url:'/',
 	},
 	{
-		name:'Collections',
+		name:'Collection',
 		icon:'fluent:receipt-28-regular',
-		url:'/collections',
+		url:'/collection',
 	}, 
 	{
 		icon: 'line-md:heart',
