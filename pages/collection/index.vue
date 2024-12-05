@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { useFilterStore } from '@/store/filterbar.store'
-const filterStore = useFilterStore();
+import { useGetManShoes } from '~/composables/useGetManShoes'
+import { useGetWomenShoes } from '~/composables/useGetWomenShoes'
+
+const { data: itemsMan, isLoading, isError } = useGetManShoes()
+
+const { data: itemsWomen, isLoading: isLoadingWoman, isError: isErrorWoman } = useGetWomenShoes()
 </script>
 
 <template>
@@ -12,8 +16,32 @@ const filterStore = useFilterStore();
 		<LayoutFilterBar />
 
 		<section id="">
-			<div>
-				
+			<div v-for="item in itemsMan" :key="item.id">
+				<div class="text-2xl flex flex-col gap-3 text-white">
+					<div>
+						{{ item.name }}
+					</div>
+					<div>
+						{{ item.vendor }}
+					</div>
+					<div>
+						{{ item.description }}
+					</div>
+					<div>
+						<NuxtImg :src="item.foto_url"/>
+					</div>
+				</div>
+			</div>
+
+			<div v-for="item in itemsWomen" class="mt-20" :key="item.id">
+				<div class="text-2xl flex flex-col gap-3 text-white">
+					<div>
+						{{ item.name }}
+					</div>
+					<div>
+						{{ item.description }}
+					</div>
+				</div>
 			</div>
 		</section>
 	</div>
