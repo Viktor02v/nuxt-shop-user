@@ -11,10 +11,10 @@ const toggleFilter = () => {
 	<aside :class="{
 		'translate-x-0': filterStore.isFilterOpen,
 		'translate-x-[0px] md:translate-x-[-300px]': !filterStore.isFilterOpen
-	}" class="fixed left-0 bottom-0 transition-all duration-500  bg-gradient-to-r from-[#020817] to-[#0F172A] h-[calc(100vh-80px)]">
+	}" class="fixed left-0 bottom-0 transition-all duration-500  bg-gradient-to-l from-[#020817] to-[#0F172A] h-[calc(100vh-80px)]">
 		<div class="w-[315px] relative">
 			<div
-				class="fixed top-[80px] flex text-2xl justify-center gap-2 items-center border-b left-0 w-[300px] h-[80px]">
+				class="fixed top-[80px] flex text-2xl justify-center gap-2 items-center left-0 w-[300px] h-[80px]">
 				<div>
 					Filters
 				</div>
@@ -52,8 +52,9 @@ const toggleFilter = () => {
 				</div>
 			</div>
 
-			<div class="fixed transition-all hover:scale-125 top-[450px] left-[300px]">
-				<Icon @click="toggleFilter" name="mynaui:panel-right-close" size="30" class="cursor-pointer" />
+			<div class="fixed transition-all duration-500 hover:scale-125 top-[450px] left-[300px]">
+				<Icon v-if="!filterStore.isFilterOpen" @click="toggleFilter" name="mynaui:panel-right-close" size="30" class="cursor-pointer" />
+				<Icon v-else @click="toggleFilter" name="mynaui:panel-left-close" size="30" class="cursor-pointer" />
 			</div>
 		</div>
 	</aside>
