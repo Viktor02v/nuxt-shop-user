@@ -13,7 +13,7 @@ const filterStore = useFilterStore();
 
 		<section id="">
 			<div>
-				Something
+				
 			</div>
 		</section>
 	</div>
