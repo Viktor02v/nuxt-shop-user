@@ -53,8 +53,8 @@ const toggleFilter = () => {
 			</div>
 
 			<div class="fixed transition-all duration-500 hover:scale-125 top-[450px] left-[300px]">
-				<Icon v-if="!filterStore.isFilterOpen" @click="toggleFilter" name="mynaui:panel-right-close" size="30" class="cursor-pointer" />
-				<Icon v-else @click="toggleFilter" name="mynaui:panel-left-close" size="30" class="cursor-pointer" />
+				<Icon v-if="!filterStore.isFilterOpen" @click="toggleFilter" name="mynaui:panel-right-close" size="40" class="cursor-pointer" />
+				<Icon v-else @click="toggleFilter" name="mynaui:panel-left-close" size="40" class="cursor-pointer" />
 			</div>
 		</div>
 	</aside>

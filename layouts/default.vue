@@ -20,7 +20,7 @@ const loadingStore = useIsLoadingStore();
 				'md:w-[1390px]': !menuStore.isMenuOpen && !filterStore.isFilterOpen // Neither is open
 			}" :style="{
 				marginLeft: filterStore.isFilterOpen ? '310px' : ''
-			}" class="transition-all w-full duration-500 mt-[80px]">
+			}" class="transition-all w-full h-full duration-500 mt-[80px]">
 				<slot />
 			</div>
 		</section>

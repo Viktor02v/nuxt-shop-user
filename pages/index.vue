@@ -8,7 +8,7 @@ const { activeStep, handleStepChange } = useStepNavigation();
 </script>
 
 <template>
-	<div class="md:p-10 md:pl-[150px] relative z-0 w-full h-[100vh]">
+	<div class="md:p-10 md:pl-[150px] relative z-0 w-full">
 		<LayoutTitle class="flex transition-all mb-10 duration-300 items-center justify-end gap-2">
 			Overview
 		</LayoutTitle>
@@ -18,7 +18,7 @@ const { activeStep, handleStepChange } = useStepNavigation();
 		<section id="step-1" :class="{ 'active': activeStep === 1, 'scale-100': activeStep !== 1 }"
 			class="w-full mb-[80px] transition-all duration-500 ease-in-out scroll-mt-[100px]">
 			<h1 class="font-bold text-center mb-10 text-4xl">Go to Collections</h1>
-			<LayoutLandingPageInfoBlock imgSrc="/overview/to-collections.png">
+			<LayoutLandingPageInfoBlock imgSrc="/overview/to-collection.jpeg">
 				<template #content>
 					<p
 						class="self-start text-lg md:text-xl text-white font-light leading-relaxed bg-gradient-to-r from-[#020817] to-[#0F172A] p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out flex items-center">
