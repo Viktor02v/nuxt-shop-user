@@ -12,5 +12,10 @@ export const useFilterStore = defineStore('filter', {
 	setVendor(vendorName: string | null) {
 		this.vendorName = vendorName;
 	},
+	setClear() {
+		this.vendorName = null;
+		this.sortMode = null;
+		this.search = ''
+	},
 	},
 });

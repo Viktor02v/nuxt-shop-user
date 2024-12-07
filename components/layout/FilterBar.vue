@@ -12,6 +12,7 @@ const setVendor = (vendor: string | null) => {
 	filterStore.setVendor(vendor); // Call the store action
 };
 
+const clearFilters = () => filterStore.setClear();
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const setVendor = (vendor: string | null) => {
 				</div>
 			</div>
 
-			<div class="fixed top-[160px] h-full p-2 w-[300px] left-0">
+			<div class="fixed top-[140px] h-full p-2 w-[300px] left-0">
 				<div class="p-5 flex flex-col gap-5 border rounded">
 					<LayoutFilterBarField>
 						<template v-slot:label>
@@ -50,7 +51,7 @@ const setVendor = (vendor: string | null) => {
 						</ul>
 					</div>
 
-					<div class="">
+					<div class="border-b pb-2">
 						<p class="text-center text-[1.2rem] pb-2">By Vendors</p>
 						<ul class="flex cursor-pointer underline flex-col gap-1">
 							<li @click="setVendor('Nike')">Nike</li>
@@ -60,13 +61,17 @@ const setVendor = (vendor: string | null) => {
 							<li @click="setVendor(null)">Clear Vendor Filter</li>
 						</ul>
 					</div>
+
+					<div class="text-center">
+						<button @click="clearFilters" class="p-2 rounded text-[0.7rem] bg-red-500">Clear Filters</button>
+					</div>
 				</div>
 
 				<div v-if="filterStore.search || filterStore.sortMode || filterStore.vendorName" class="p-4">
 					<div class="text-center">Active Filters</div>
-					<p v-if="filterStore.search" class="font-light text-[1.1rem]">Name: {{ filterStore.search }}</p>
-					<p v-if="filterStore.sortMode" class="font-light text-[1.1rem]">Price: {{ filterStore.sortMode }}</p>
-					<p v-if="filterStore.vendorName" class="font-light text-[1.1rem]">Vendor: {{ filterStore.vendorName }}</p>
+					<p v-if="filterStore.search" class="font-light text-[1rem]">Name: {{ filterStore.search }}</p>
+					<p v-if="filterStore.sortMode" class="font-light text-[1rem]">Price: {{ filterStore.sortMode }}</p>
+					<p v-if="filterStore.vendorName" class="font-light text-[1rem]">Vendor: {{ filterStore.vendorName }}</p>
 				</div>
 			</div>
 
