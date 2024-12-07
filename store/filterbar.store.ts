@@ -1,11 +1,12 @@
-export const useFilterStore = defineStore('filter',{
-	state:() => ({
+export const useFilterStore = defineStore('filter', {
+	state: () => ({
 		isFilterOpen: false,
-		search: ''
+		search: '',
+		sortMode: null as 'cheapest' | 'expensive' | null,
 	}),
-	actions:{
+	actions: {
 		toggleMenu() {
-			this.isFilterOpen = !this.isFilterOpen; 
+			this.isFilterOpen = !this.isFilterOpen;
 		},
-	}
-})
+	},
+});

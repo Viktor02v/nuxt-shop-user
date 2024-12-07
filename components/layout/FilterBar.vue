@@ -2,10 +2,12 @@
 import { useFilterStore } from '@/store/filterbar.store'
 const filterStore = useFilterStore();
 
+const toggleFilter = () => filterStore.toggleMenu();
 
-const toggleFilter = () => {
-	filterStore.toggleMenu();
-}
+const setSortMode = (mode: 'cheapest' | 'expensive') => {
+	filterStore.sortMode = mode;
+};
+
 </script>
 
 <template>
@@ -36,9 +38,8 @@ const toggleFilter = () => {
 					<div>
 						<p class="text-center text-[1.2rem] pb-2">By Prices</p>
 						<ul class="flex cursor-pointer underline border-b pb-8 flex-col gap-1">
-							<li>{{ filterStore.search }}</li>
-							<li>Search Cheapes</li>
-							<li>Search More Expensive</li>
+							<li @click="setSortMode('cheapest')">Search Cheapes</li>
+							<li @click="setSortMode('expensive')">Search More Expensive</li>
 						</ul>
 					</div>
 

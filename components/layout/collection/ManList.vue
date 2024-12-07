@@ -8,11 +8,11 @@ import { useFilteredShoes } from '@/composables/useFilteredShoes';
 
 const favoriteStore = useFavoriteStore()
 const cartStore = useCartStore()
-
-const { data: itemsMan, isLoading, isError } = useGetManShoes()
 const filterStore = useFilterStore();
 
-const { filteredShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterStore);
+const { data: itemsMan, isLoading, isError } = useGetManShoes()
+
+const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterStore);
 </script>
 
 <template>
@@ -21,12 +21,12 @@ const { filteredShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterS
 			Is Loading....
 		</div>
 		<div v-if="itemsMan" class="p-5 grid grid-cols-5 gap-4">
-			<div v-for="item in filteredShoes" :key="item.$id" class="">
+			<div v-for="item in sortedShoes" :key="item.$id" class="">
 				<div
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
 						<div class=" min-h-[220px] flex flex-col  justify-center">
-							<NuxtImg :src="item.foto_url" width="200" class="mb-4   bg-[#060D1D] rounded" />
+							<img :src="item.foto_url" width="200" class="mb-4 bg-[#060D1D] rounded" />
 						</div>
 
 						<div class="flex gap-1 mb-2 flex-col">

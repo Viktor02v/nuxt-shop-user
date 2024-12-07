@@ -11,7 +11,7 @@ const cartStore = useCartStore()
 const { data: itemsWomen, isLoading: isLoadingWomen, isError: isErrorWomen } = useGetWomenShoes()
 const filterStore = useFilterStore();
 
-const { filteredShoes } = useFilteredShoes(itemsWomen, isLoadingWomen, isErrorWomen, filterStore);
+const { sortedShoes } = useFilteredShoes(itemsWomen, isLoadingWomen, isErrorWomen, filterStore);
 </script>
 <template>
 	<div>
@@ -19,7 +19,7 @@ const { filteredShoes } = useFilteredShoes(itemsWomen, isLoadingWomen, isErrorWo
 			Is Loading....
 		</div>
 		<div v-if="itemsWomen" class="p-5 grid grid-cols-5 gap-4">
-			<div v-for="item in filteredShoes" :key="item.$id" class="">
+			<div v-for="item in sortedShoes" :key="item.$id" class="">
 				<div
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
