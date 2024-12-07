@@ -2,19 +2,34 @@
 import { useGetWomenShoes } from '~/composables/useGetWomenShoes'
 import { useFavoriteStore } from '@/store/favorite.store'
 import { useCartStore } from '@/store/cart.store'
+import { useFilterStore } from '@/store/filterbar.store';
 
 const favoriteStore = useFavoriteStore()
 const cartStore = useCartStore()
 
-const { data: itemsWomen, isLoading: isLoadingWoman, isError: isErrorWoman } = useGetWomenShoes()
+const { data: itemsWomen, isLoading: isLoadingWomen, isError: isErrorWomen } = useGetWomenShoes()
+const filterStore = useFilterStore();
+
+const filteredWomenShoes = computed(() => {
+	if (isLoadingWomen.value) return []; // Handle loading state
+	if (isErrorWomen.value) return [];  // Handle error state
+
+	const searchTerm = filterStore.search.toLowerCase().trim();
+	if (!itemsWomen || !Array.isArray(itemsWomen.value)) return [];
+	if (!searchTerm) return itemsWomen.value;
+
+	return itemsWomen.value.filter((item) =>
+		item.name.toLowerCase().startsWith(searchTerm)
+	);
+});
 </script>
 <template>
 	<div>
-		<div v-if="isLoadingWoman">
+		<div v-if="isLoadingWomen">
 			Is Loading....
 		</div>
 		<div v-if="itemsWomen" class="p-5 grid grid-cols-5 gap-4">
-			<div v-for="item in itemsWomen" :key="item.$id" class="">
+			<div v-for="item in filteredWomenShoes" :key="item.$id" class="">
 				<div
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
@@ -25,7 +40,7 @@ const { data: itemsWomen, isLoading: isLoadingWoman, isError: isErrorWoman } = u
 						<div class="flex gap-1 mb-2 flex-col">
 							<p class="text-[1.3rem] ">{{ item.name }}</p>
 							<div class="w-[100px] overflow-auto text-nowrap">
-								<p class="underline font-light">{{ item.description }};oi;oij;oij;o</p>
+								<p class="underline font-light">{{ item.description }}</p>
 							</div>
 							<p class="">{{ item.vendor }}</p>
 							<p class="font-light">{{ item.price }}$</p>

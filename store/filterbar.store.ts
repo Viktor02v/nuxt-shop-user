@@ -1,6 +1,7 @@
 export const useFilterStore = defineStore('filter',{
 	state:() => ({
-		isFilterOpen: false
+		isFilterOpen: false,
+		search: ''
 	}),
 	actions:{
 		toggleMenu() {

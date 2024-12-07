@@ -2,11 +2,27 @@
 import { useGetManShoes } from '~/composables/useGetManShoes'
 import { useFavoriteStore } from '@/store/favorite.store'
 import { useCartStore } from '@/store/cart.store'
+import { useFilterStore } from '@/store/filterbar.store';
+
 
 const favoriteStore = useFavoriteStore()
 const cartStore = useCartStore()
 
 const { data: itemsMan, isLoading, isError } = useGetManShoes()
+const filterStore = useFilterStore();
+
+const filteredManShoes = computed(() => {
+	if (isLoading.value) return []; // Handle loading state
+	if (isError.value) return [];  // Handle error state
+
+	const searchTerm = filterStore.search.toLowerCase().trim();
+	if (!itemsMan || !Array.isArray(itemsMan.value)) return [];
+	if (!searchTerm) return itemsMan.value;
+
+	return itemsMan.value.filter((item) =>
+		item.name.toLowerCase().startsWith(searchTerm)
+	);
+});
 </script>
 
 <template>
@@ -15,7 +31,7 @@ const { data: itemsMan, isLoading, isError } = useGetManShoes()
 			Is Loading....
 		</div>
 		<div v-if="itemsMan" class="p-5 grid grid-cols-5 gap-4">
-			<div v-for="item in itemsMan" :key="item.$id" class="">
+			<div v-for="item in filteredManShoes" :key="item.$id" class="">
 				<div
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
