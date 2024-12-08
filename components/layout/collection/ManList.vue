@@ -22,7 +22,7 @@ const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterSto
 		</div>
 		<div v-if="itemsMan" class="p-5 grid grid-cols-5 gap-4">
 			<div v-for="item in sortedShoes" :key="item.$id" class="">
-				<div
+				<NuxtLink :to="`/collection/item/${item.$id}`"
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
 						<div class=" min-h-[220px] flex flex-col  justify-center">
@@ -64,9 +64,11 @@ const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterSto
 							</div>
 						</div>
 					</div>
-				</div>
+				</NuxtLink>
 			</div>
 		</div>
+
+		<div v-if="isError">`There has been some error:{{ isError }}`</div>
 	</div>
 </template>
 
