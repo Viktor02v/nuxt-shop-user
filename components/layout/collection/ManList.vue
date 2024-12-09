@@ -24,7 +24,7 @@ const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterSto
 							<img :src="item.foto_url" width="200" class="mb-4 bg-[#060D1D] rounded" />
 						</div>
 
-						<div class="flex gap-1 mb-2 flex-col">
+						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
 							<p class="text-[1.3rem] ">{{ item.name }}</p>
 							<div class="w-[100px] overflow-auto text-nowrap">
 								<p class="underline font-light">{{ item.description }};oi;oij;oij;o</p>
