@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { useGetManShoes } from '~/composables/useGetManShoes'
-import { useFavoriteStore } from '@/store/favorite.store'
-import { useCartStore } from '@/store/cart.store'
 import { useFilterStore } from '@/store/filterbar.store';
 import { useFilteredShoes } from '@/composables/useFilteredShoes';
 
-
-const favoriteStore = useFavoriteStore()
-const cartStore = useCartStore()
 const filterStore = useFilterStore();
 
 const { data: itemsMan, isLoading, isError } = useGetManShoes()
@@ -22,7 +17,7 @@ const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterSto
 		</div>
 		<div v-if="itemsMan" class="p-5 grid grid-cols-5 gap-4">
 			<div v-for="item in sortedShoes" :key="item.$id" class="">
-				<NuxtLink :to="`/collection/item/${item.$id}`"
+				<NuxtLink :to="`/collection/itemMan/${item.$id}`"
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
 						<div class=" min-h-[220px] flex flex-col  justify-center">
@@ -39,30 +34,7 @@ const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterSto
 							<span class="underline">Show more...</span>
 						</div>
 
-						<div class="mt-2 flex gap-2 justify-end">
-							<div class="">
-								<p v-if="!favoriteStore.isFavorite" @click="favoriteStore.toggleFavorite"
-									class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="mynaui:heart" size="25" class="hover:scale-110 transition-all duration-400" />
-								</p>
-								<p v-else @click="favoriteStore.toggleFavorite"
-									class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="majesticons:heart" size="25"
-										class="hover:scale-110 transition-all text-red-600 duration-400" />
-								</p>
-							</div>
-
-							<div class="">
-								<p v-if="!cartStore.inCart" @click="cartStore.toggleCart"
-									class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="gg:add" size="26" class="hover:scale-110 transition-all duration-400" />
-								</p>
-								<p v-else @click="cartStore.toggleCart" class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="icons8:checked" size="26"
-										class="hover:scale-110 transition-all text-green-600 duration-400" />
-								</p>
-							</div>
-						</div>
+						<LayoutCollectionButtonsMan />
 					</div>
 				</NuxtLink>
 			</div>
