@@ -56,29 +56,31 @@ const { data: itemsMan, isLoading, isError } = useGetManShoes()
 				</div>
 			</section>
 
-			<section class="p-5 mt-10 border">
+			<div v-if="isLoading">
+				Carousel is Loading...
+			</div>
+
+			<section v-if="itemsMan" class="p-5 mt-10 border">
 				<div class="w-full">
 					<h2 class="text-center font-bold mb-5 text-[1.8rem]">Recomendations</h2>
-					<UiCarousel class="w-full flex justify-center items-center relative ">
-						<UiCarouselContent class="flex item-center gap-4">
-							<!-- Iterate through items -->
-
+					<LayoutCollectionCarousel>
+						<template #items>
 							<UiCarouselItem v-for="item in itemsMan" :key="item.$id"
-								class="basis-1/3 border relative rounded bg-gradient-to-b from-[#020817] to-[#0F172A] flex items-cetner justify-center flex-shrink-0">
+								class="basis-1/3 border relative rounded bg-gradient-to-b from-[#020817] to-[#0F172A] flex items-center h-[200px] justify-center flex-shrink-0">
 								<NuxtLink :to="`/collection/itemMan/${item.$id}`" class="flex items-center">
 									<NuxtImg :src="item.foto_url" class="" width="200px" />
 								</NuxtLink>
 								<p class="absolute bottom-2 text-white text-sm">{{ item.name }}</p>
 								<p class="absolute right-3 top-2 text-white text-xs">{{ item.vendor }}</p>
 							</UiCarouselItem>
-
-						</UiCarouselContent>
-						<!-- Navigation buttons -->
-						<UiCarouselPrevious class="absolute left-5 bg-gray-900 p-2 rounded-full" />
-						<UiCarouselNext class="absolute right-5 bg-gray-900 p-2 rounded-full" />
-					</UiCarousel>
+						</template>
+					</LayoutCollectionCarousel>
 				</div>
 			</section>
+
+			<div v-if="isError">
+				There has been some error while loading carousel
+			</div>
 		</div>
 		<div v-if="isErrorShoe">Something has went wrong</div>
 	</div>
