@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { useWomanShoe } from "@/composables/useWomanShoe"
-import { useFavoriteStore } from '@/store/favorite.store'
-import { useCartStore } from '@/store/cart.store'
 import { useGetWomenShoes } from '~/composables/useGetWomenShoes'
 
-const favoriteStore = useFavoriteStore()
-const cartStore = useCartStore()
 
 const route = useRoute()
 const itemId = route.params.id as string;
@@ -48,7 +44,7 @@ const { data: itemsWoman, isLoading, isError } = useGetWomenShoes()
 
 							<div class="mt-20 flex justify-end w-full ">
 								<div class="flex items-center">
-									<!-- <LayoutCollectionButtonsMan /> -->
+									<LayoutCollectionFavoriteCartButtonsWoman :item="womanShoe"/>
 								</div>
 							</div>
 						</div>
