@@ -6,7 +6,6 @@ import type { Item } from "@/types/shoes.types";
 export function useToggleFavoriteMan() {
 const queryClient = useQueryClient();
 
-  // Directly use queryKey as an array (no ref needed)
 const queryKey = [COLLECTION_MAN];
 
 const toggleFavoriteMutation = useMutation({

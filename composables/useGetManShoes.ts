@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/vue-query";
 import { COLLECTION_MAN, DB_ID } from "~/app.constants";
 import { DB } from "~/lib/appwrite";
 import type { Item } from "@/types/shoes.types";
-import { useClipboardItems } from "@vueuse/core";
-
 
 export function useGetManShoes() {
 	return useQuery({
