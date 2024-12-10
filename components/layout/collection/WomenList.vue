@@ -39,7 +39,7 @@ const { sortedShoes } = useFilteredShoes(itemsWomen, isLoadingWomen, isErrorWome
 								<span class="underline">Show more...</span>
 							</div>
 
-							<LayoutCollectionButtonsMan />
+							<!-- <LayoutCollectionButtonsMan /> -->
 						</div>
 					</div>
 				</NuxtLink>

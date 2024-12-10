@@ -48,7 +48,7 @@ const { data: itemsWoman, isLoading, isError } = useGetWomenShoes()
 
 							<div class="mt-20 flex justify-end w-full ">
 								<div class="flex items-center">
-									<LayoutCollectionButtonsMan />
+									<!-- <LayoutCollectionButtonsMan /> -->
 								</div>
 							</div>
 						</div>
