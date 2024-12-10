@@ -3,7 +3,6 @@ import { COLLECTION_MAN, DB_ID } from "~/app.constants";
 import { DB } from "~/lib/appwrite";
 import type { Item } from "@/types/shoes.types";
 
-
 export function useGetManShoes() {
 	return useQuery({
 		queryKey: ['man-shoes'],
@@ -17,3 +16,4 @@ export function useGetManShoes() {
 		},
 	});
 }
+

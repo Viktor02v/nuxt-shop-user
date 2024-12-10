@@ -1,24 +1,21 @@
 <script setup lang="ts">
-import { useGetManShoes } from '~/composables/useGetManShoes'
-import { useFilterStore } from '@/store/filterbar.store';
-import { useFilteredShoes } from '@/composables/useFilteredShoes';
-
-const filterStore = useFilterStore();
-
-const { data: itemsMan, isLoading, isError } = useGetManShoes()
-
-const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterStore);
-
-
+const { data: favoriteItems, isLoading, isError } = useGetFavorites();
 </script>
 
 <template>
-	<div>
+	<div class="">
 		<div v-if="isLoading">
 			Is Loading....
 		</div>
-		<div v-if="itemsMan" class="p-5 grid grid-cols-5 gap-4">
-			<div v-for="item in sortedShoes" :key="item.$id" class="">
+		<div v-if="favoriteItems?.length === 0" class="flex justify-center items-center min-h-[calc(100vh-200px)]">
+			<div class="p-[50px] bg-gradient-to-t from-[#020817] to-[#0F172A]  flex justify-center border rounded font-bold text-[1.8rem] items-cetner">
+				<div>
+					No Favorites Choosen
+				</div>
+			</div>
+		</div>
+		<div v-if="favoriteItems" class="p-5 bg-gradient-to-b from-[#020817] to-[#0F172A]  animation grid grid-cols-5 gap-4">
+			<div v-for="item in favoriteItems" :key="item.$id" class="">
 				<NuxtLink :to="`/collection/itemMan/${item.$id}`"
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
@@ -29,7 +26,7 @@ const { sortedShoes } = useFilteredShoes(itemsMan, isLoading, isError, filterSto
 						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
 							<p class="text-[1.3rem] ">{{ item.name }}</p>
 							<div class="w-[100px] overflow-auto text-nowrap">
-								<p class="underline font-light">{{ item.description }};oi;oij;oij;o</p>
+								<p class="underline font-light">{{ item.description }}</p>
 							</div>
 							<p class="">{{ item.vendor }}</p>
 							<p class="font-light">{{ item.price }}$</p>

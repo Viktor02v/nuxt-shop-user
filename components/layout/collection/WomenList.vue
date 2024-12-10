@@ -2,63 +2,49 @@
 import { useGetWomenShoes } from '~/composables/useGetWomenShoes'
 import { useFavoriteStore } from '@/store/favorite.store'
 import { useCartStore } from '@/store/cart.store'
+import { useFilterStore } from '@/store/filterbar.store';
+import { useFilteredShoes } from '@/composables/useFilteredShoes';
 
 const favoriteStore = useFavoriteStore()
 const cartStore = useCartStore()
 
-const { data: itemsWomen, isLoading: isLoadingWoman, isError: isErrorWoman } = useGetWomenShoes()
+const { data: itemsWomen, isLoading: isLoadingWomen, isError: isErrorWomen } = useGetWomenShoes()
+const filterStore = useFilterStore();
+
+const { sortedShoes } = useFilteredShoes(itemsWomen, isLoadingWomen, isErrorWomen, filterStore);
 </script>
 <template>
 	<div>
-		<div v-if="isLoadingWoman">
+		<div v-if="isLoadingWomen">
 			Is Loading....
 		</div>
 		<div v-if="itemsWomen" class="p-5 grid grid-cols-5 gap-4">
-			<div v-for="item in itemsWomen" :key="item.$id" class="">
-				<div
-					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
-					<div class="flex flex-col">
-						<div class=" min-h-[220px] flex flex-col  justify-center">
-							<NuxtImg :src="item.foto_url" width="200" class="mb-4   bg-[#060D1D] rounded" />
-						</div>
 
-						<div class="flex gap-1 mb-2 flex-col">
-							<p class="text-[1.3rem] ">{{ item.name }}</p>
-							<div class="w-[100px] overflow-auto text-nowrap">
-								<p class="underline font-light">{{ item.description }};oi;oij;oij;o</p>
-							</div>
-							<p class="">{{ item.vendor }}</p>
-							<p class="font-light">{{ item.price }}$</p>
-							<span class="underline">Show more...</span>
-						</div>
-
-						<div class="mt-2 flex gap-2 justify-end">
-							<div class="">
-								<p v-if="!favoriteStore.isFavorite" @click="favoriteStore.toggleFavorite"
-									class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="mynaui:heart" size="25" class="hover:scale-110 transition-all duration-400" />
-								</p>
-								<p v-else @click="favoriteStore.toggleFavorite"
-									class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="majesticons:heart" size="25"
-										class="hover:scale-110 transition-all text-red-600 duration-400" />
-								</p>
+			<div v-for="item in sortedShoes" :key="item.$id" class="">
+				<NuxtLink :to="`/collection/itemWoman/${item.$id}`">
+					<div
+						class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
+						<div class="flex flex-col">
+							<div class=" min-h-[220px] flex flex-col  justify-center">
+								<NuxtImg :src="item.foto_url" width="200" class="mb-4   bg-[#060D1D] rounded" />
 							</div>
 
-							<div class="">
-								<p v-if="!cartStore.inCart" @click="cartStore.toggleCart"
-									class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="gg:add" size="26" class="hover:scale-110 transition-all duration-400" />
-								</p>
-								<p v-else @click="cartStore.toggleCart" class="p-2 flex items-center rounded-full bg-[#0d193c]">
-									<Icon name="icons8:checked" size="26"
-										class="hover:scale-110 transition-all text-green-600 duration-400" />
-								</p>
+							<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
+								<p class="text-[1.3rem] ">{{ item.name }}</p>
+								<div class="w-[100px] overflow-auto text-nowrap">
+									<p class="underline font-light">{{ item.description }}</p>
+								</div>
+								<p class="">{{ item.vendor }}</p>
+								<p class="font-light">{{ item.price }}$</p>
+								<span class="underline">Show more...</span>
 							</div>
+
+							<LayoutCollectionFavoriteCartButtonsWoman :item="item" />
 						</div>
 					</div>
-				</div>
+				</NuxtLink>
 			</div>
+
 		</div>
 	</div>
 </template>
