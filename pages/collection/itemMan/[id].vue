@@ -52,7 +52,30 @@ const toggleCart = useToggleCartMan();
 								</li>
 							</ul>
 
-							<LayoutCollectionFavoriteCartButtonsMan :item="manShoe" />
+							<LayoutCollectionFavoriteCardButtons>
+								<template #favorites>
+									<UiButton v-if="!manShoe?.isFavorite" @click.prevent="toggleFavorite.mutate(manShoe)"
+										class="p-2 flex items-center text-white rounded-full bg-[#0d193c]">
+										<Icon name="mynaui:heart" size="25" class="hover:scale-110 transition-all duration-400" />
+									</UiButton>
+									<UiButton v-else @click.prevent="toggleFavorite.mutate(manShoe)"
+										class="p-2 flex items-center text-white rounded-full bg-[#0d193c]">
+										<Icon name="majesticons:heart" size="25"
+											class="hover:scale-110 transition-all text-red-600 duration-400" />
+									</UiButton>
+								</template>
+								<template #cart>
+									<UiButton v-if="!manShoe?.isAdded" @click.prevent="toggleCart.mutate(manShoe)"
+										class="p-2 flex items-center text-white rounded-full bg-[#0d193c]">
+										<Icon name="gg:add" size="26" class="hover:scale-110 transition-all duration-400" />
+									</UiButton>
+									<UiButton v-else @click.prevent="toggleCart.mutate(manShoe)"
+										class="p-2 text-white transition-all duration-400 flex items-center rounded-full bg-[#0d193c]">
+										<Icon name="icons8:checked" size="26"
+											class="hover:scale-110 transition-all text-green-600 duration-400" />
+									</UiButton>
+								</template>
+							</LayoutCollectionFavoriteCardButtons>
 						</div>
 					</div>
 				</div>

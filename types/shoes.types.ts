@@ -1,4 +1,4 @@
-export interface Item{
+export interface ItemMan{
 	name: string
 	description:string
 	vendor:string
@@ -6,5 +6,31 @@ export interface Item{
 	foto_url: string
 	isFavorite:boolean
 	isAdded:boolean
+	isMan:boolean
 }
+
+export interface ItemWoman{
+	name: string
+	description:string
+	vendor:string
+	price:number
+	foto_url: string
+	isFavorite:boolean
+	isAdded:boolean
+	isWoman:boolean
+}
+
+
+export interface ItemFavorite{
+	name: string
+	description:string
+	vendor:string
+	price:number
+	foto_url: string
+	isFavorite:boolean
+	isAdded:boolean
+	isMan?:boolean
+	isWoman?:boolean
+}
+
 

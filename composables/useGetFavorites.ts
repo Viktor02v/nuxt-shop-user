@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/vue-query";
 import { COLLECTION_MAN, COLLECTION_WOMEN, DB_ID } from "~/app.constants";
 import { DB } from "~/lib/appwrite";
-import type { Item } from "@/types/shoes.types";
+import type { ItemFavorite } from "@/types/shoes.types";
 
 // Fetch items from two collections and merge them
 export function useGetFavorites() {
@@ -20,11 +20,11 @@ export function useGetFavorites() {
 			
 			// Filter items where 'isFavorite' is true
 			const favoriteItems = mergedItems.filter(item => item.isFavorite === true);
-			return favoriteItems as unknown as Item[];
+			return favoriteItems as unknown as ItemFavorite[];
 		},
 		select(data) {
 			// Optionally process the data if necessary
-			return data as Item[];
+			return data as ItemFavorite[];
 		},
 	});
 }
