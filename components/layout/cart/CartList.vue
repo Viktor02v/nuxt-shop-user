@@ -10,6 +10,8 @@ const toggleCartWoman = useToggleCartWoman();
 const toggleCart = (item: any) => {
 	item.isMan ? toggleCartMan.mutate(item) : toggleCartWoman.mutate(item);
 };
+
+
 </script>
 
 <template>
