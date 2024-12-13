@@ -45,5 +45,12 @@ export interface ItemAdded{
 	isWoman?:boolean
 }
 
+export interface ItemOrder{
+	userId:string
+	status:string
+	totalPrice:number
+	createdAt:string
+}
+
 
 

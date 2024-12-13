@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useQuery } from "@tanstack/vue-query";
-import { COLLECTION_ORDER_ITEMS, DB_ID } from "~/app.constants";
-import { DB } from "~/lib/appwrite";
+import { ref } from "vue"
 import { v4 as uuidv4 } from "uuid";
 import { useGetItemsCart } from "@/composables/useGetItemsCart"
 
@@ -26,38 +24,12 @@ const handleCreateOrder = async () => {
 			createdAt: new Date().toISOString(),
 		};
 
-		const createdOrder = await createOrder(order);
-
-		// Check if the order was created and has a valid $id
-		if (!createdOrder || !createdOrder) {
-			throw new Error("Failed to create order: Missing order ID");
-		}
-
-		// Now, create order items linked to the created order
-		const orderItems = items.map(item => ({
-			orderId: createdOrder.$id,  // Use the auto-generated orderId
-			itemId: uuidv4(),  // Optional, generate UUID for each item
-			name: item.name,
-			price: item.price,
-			quantity: 1,  // Adjust quantity if needed
-		}));
-
-		// Create the order items in parallel
-		await Promise.all(
-			orderItems.map(item => createOrderItem(item))  // Create each item document
-		);
-
+		createOrder(order);
 		alert("Order placed successfully!");
 	} catch (error) {
 		console.error("Error creating order:", error);
 		alert("Failed to place order. Please try again.");
 	}
-};
-
-
-// Function to create the order item document
-const createOrderItem = async (item) => {
-	return DB.createDocument(DB_ID, COLLECTION_ORDER_ITEMS, item.itemId, item);
 };
 
 </script>
