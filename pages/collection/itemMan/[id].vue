@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { useManShoe } from "@/composables/useManShoe"
-import { useFavoriteStore } from '@/store/favorite.store'
-import { useCartStore } from '@/store/cart.store'
 import { useGetManShoes } from '~/composables/useGetManShoes'
 import { useToggleFavoriteMan } from '@/composables/useToggleFavoriteMan'
 import { useToggleCartMan } from '@/composables/useToggleCartMan'
-
-const favoriteStore = useFavoriteStore()
-const cartStore = useCartStore()
 
 const route = useRoute()
 const itemId = route.params.id as string;
