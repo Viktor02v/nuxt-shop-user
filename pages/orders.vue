@@ -2,11 +2,13 @@
 import { useOrderHandler } from "@/composables/useOrderHandler"
 import { useGetItemsCart } from "@/composables/useGetItemsCart"
 import { useUserStore } from "@/store/user.store"
+import { useOrderDetailsStore } from "@/store/orderDetails.store"
 
 const { data: addedItems, isLoading, isError: isErrorCart } = useGetItemsCart();
 const { handleCreateOrder, isLoading: isCreating, isError } = useOrderHandler();
 
 const userStore = useUserStore()
+const orderDetailsStore = useOrderDetailsStore()
 </script>
 
 <template>
@@ -29,7 +31,43 @@ const userStore = useUserStore()
 								<UiInput v-model="userStore.city" placeholder="City" />
 								<UiInput v-model="userStore.region" placeholder="Region" />
 								<UiInput v-model="userStore.number" placeholder="Phone Number" />
-								
+
+								<UiSelect v-model="orderDetailsStore.delivery">
+									<UiSelectTrigger>
+										<UiSelectValue placeholder="Select Delivery Method" />
+									</UiSelectTrigger>
+									<UiSelectContent>
+										<UiSelectGroup>
+											<UiSelectLabel>Methods</UiSelectLabel>
+											<UiSelectItem value="NovaPost">
+												NovaPost
+											</UiSelectItem>
+											<UiSelectItem value="УкрPost">
+												УкрPost
+											</UiSelectItem>
+										</UiSelectGroup>
+									</UiSelectContent>
+								</UiSelect>
+
+								<UiSelect v-model="orderDetailsStore.payment">
+									<UiSelectTrigger>
+										<UiSelectValue placeholder="Select A Payment Method" />
+									</UiSelectTrigger>
+									<UiSelectContent>
+										<UiSelectGroup>
+											<UiSelectLabel>Methods</UiSelectLabel>
+											<UiSelectItem value="PayPal">
+												PayPal
+											</UiSelectItem>
+											<UiSelectItem value="MasterCard">
+												MasterCard
+											</UiSelectItem>
+											<UiSelectItem value="Visa">
+												Visa
+											</UiSelectItem>
+										</UiSelectGroup>
+									</UiSelectContent>
+								</UiSelect>
 							</form>
 						</div>
 
