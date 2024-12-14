@@ -6,7 +6,7 @@ import { useOrderHandler } from "@/composables/useOrderHandler"
 
 
 const { data: addedItems, isLoading, isError: isErrorCart } = useGetItemsCart();
-const { handleCreateOrder, isLoading:isCreating, isError } = useOrderHandler();
+const { handleCreateOrder, isLoading: isCreating, isError } = useOrderHandler();
 
 const userStore = useUserStore()
 const orderDetailsStore = useOrderDetailsStore()
@@ -14,7 +14,7 @@ const orderDetailsStore = useOrderDetailsStore()
 
 <template>
 	<section v-if="addedItems?.length >= 1" id="order-form" class="w-full animation">
-		<div class="border bg-gradient-to-t from-[#020817] to-[#0F172A] rounded p-5">
+		<div class="border bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5">
 			<div class="flex justify-center">
 				<div class="w-1/2">
 					<div class="mb-10">
@@ -47,7 +47,7 @@ const orderDetailsStore = useOrderDetailsStore()
 
 							<UiSelect v-model="orderDetailsStore.payment">
 								<UiSelectTrigger>
-									<UiSelectValue placeholder="Select A Payment Method" />
+									<UiSelectValue placeholder="Select Payment Method" />
 								</UiSelectTrigger>
 								<UiSelectContent>
 									<UiSelectGroup>
@@ -68,16 +68,15 @@ const orderDetailsStore = useOrderDetailsStore()
 					</div>
 
 					<LayoutOrdersOrderDetails />
-				</div>
-			</div>
-		</div>
 
-		<div>
-			<div class="text-center mt-8">
-				<UiButton @click="handleCreateOrder" class="px-6 py-3 text-white bg-green-500 rounded hover:bg-green-600"
-					type="button">
-					Create Order
-				</UiButton>
+
+					<div class="text-center mt-8">
+						<UiButton @click="handleCreateOrder"
+							class="px-6 py-3 text-white bg-green-500 rounded hover:bg-green-600" type="button">
+							Create Order
+						</UiButton>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

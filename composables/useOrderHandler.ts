@@ -74,7 +74,7 @@ export const useOrderHandler = () =>{
 				deliveryMethod:orderDetailsStore.delivery,
 				paymentMethod:orderDetailsStore.payment,
 				userId: uuidv4(), 
-				totalPrice: items.reduce((sum, item) => sum + item.price, 0),
+				totalPrice: orderDetailsStore.total,
 				status: "pending",
 				createdAt: new Date().toISOString(),
 			};
