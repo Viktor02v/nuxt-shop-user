@@ -13,34 +13,16 @@ export const useOrderHandler = () =>{
 	const orderDetailsStore = useOrderDetailsStore()
 	
 
-	const setItemsToNotAddedMan = async (items) => {
+	const setItemsToNotAdded = async (items, collection) => {
 		try {
-			// Iterate through items and update their `isAdded` property
-			const updatePromises = items.map((item) => 
-				DB.updateDocument(DB_ID, COLLECTION_MAN, item.$id, { isAdded: false })
+			const updatePromises = items.map((item) =>
+				DB.updateDocument(DB_ID, collection, item.$id, { isAdded: false })
 			);
 
-			// Wait for all updates to complete
 			await Promise.all(updatePromises);
-			console.log('All items updated to isAdded: false');
+			console.log(`All items in ${collection} updated to isAdded: false`);
 		} catch (error) {
-			console.error('Error updating items:', error);
-			throw error;
-		}
-	};
-
-	const setItemsToNotAddedWoman = async (items) => {
-		try {
-			// Iterate through items and update their `isAdded` property
-			const updatePromises = items.map((item) => 
-				DB.updateDocument(DB_ID, COLLECTION_WOMEN, item.$id, { isAdded: false })
-			);
-
-			// Wait for all updates to complete
-			await Promise.all(updatePromises);
-			console.log('All items updated to isAdded: false');
-		} catch (error) {
-			console.error('Error updating items:', error);
+			console.error(`Error updating items in ${collection}:`, error);
 			throw error;
 		}
 	};
@@ -78,8 +60,9 @@ export const useOrderHandler = () =>{
 				createdAt: new Date().toISOString(),
 			};
 
-			if (manItems.length > 0) await setItemsToNotAddedMan(manItems);
-			if (womanItems.length > 0) await setItemsToNotAddedWoman(womanItems);
+			if (manItems.length > 0) await setItemsToNotAdded(manItems,COLLECTION_MAN );
+			if (womanItems.length > 0) await setItemsToNotAdded(womanItems, COLLECTION_WOMEN );
+			
 			createOrder(order);
 			alert("Order placed successfully!");
 			setClean();
