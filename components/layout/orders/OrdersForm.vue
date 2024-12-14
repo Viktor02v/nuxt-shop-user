@@ -18,8 +18,8 @@ const orderDetailsStore = useOrderDetailsStore()
 			<div class="flex justify-center">
 				<div class="w-1/2">
 					<div class="mb-10">
-						<div class="mb-1">
-							<h2>Form Assignment:</h2>
+						<div class="mb-1 text-left">
+							<h2 class="font-light text-[1.5rem]">Form Assignment:</h2>
 						</div>
 						<form class="flex flex-col gap-2">
 							<UiInput v-model="userStore.name" placeholder="Name" />
