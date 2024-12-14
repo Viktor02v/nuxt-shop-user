@@ -2,13 +2,17 @@ import { useGetItemsCart } from "@/composables/useGetItemsCart"
 import { v4 as uuidv4 } from "uuid";
 import { useUserStore } from "@/store/user.store"
 import { useOrderDetailsStore } from "@/store/orderDetails.store"
+import {useSetIsAddedToFalse} from "@/composables/useSetIsAddedToFalse"
 
 
 export const useOrderHandler = () =>{
-	const { data: addedItems, isLoading, isError: isErrorCart } = useGetItemsCart();
+	const { data: addedItems, isLoading:isLoadingCart, isError: isErrorCart } = useGetItemsCart();
 	const { mutate: createOrder, isError, error } = useCreateOrder();
 	const userStore = useUserStore()
 	const orderDetailsStore = useOrderDetailsStore()
+	const { mutateAsync: setIsAddedToFalse, isError: isErrorUpdate } = useSetIsAddedToFalse();
+
+
 
 	const setClean = () => {
 		userStore.name = ''
@@ -39,10 +43,11 @@ export const useOrderHandler = () =>{
 				status: "pending",
 				createdAt: new Date().toISOString(),
 			};
-	
+
+			setIsAddedToFalse();
 			createOrder(order);
 			alert("Order placed successfully!");
-			setClean()
+			setClean();
 		} catch (error) {
 			console.error("Error creating order:", error);
 			alert("Failed to place order. Please try again.");
@@ -51,7 +56,7 @@ export const useOrderHandler = () =>{
 
 	return{
 		handleCreateOrder,
-		isLoading,
+		isLoadingCart,
 		isErrorCart,
 		isError,
 		error
