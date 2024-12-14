@@ -4,15 +4,11 @@
 
 <template>
 	<div class="w-full p-5">
-		<div class="text-center font-bold text-[1.8rem] mb-5">
-			<h1>Your orders</h1>
+		<div class="mb-10">
+			<LayoutOrdersForm />
 		</div>
-		
-		<LayoutOrdersForm />
 
-		<section id="order-list">
-
-		</section>
+		<LayoutOrdersList />
 	</div>
 </template>
 

@@ -19,14 +19,18 @@ const toggleCart = (item: any) => {
 		<div v-if="isLoading">
 			Is Loading....
 		</div>
-		<div v-if="addedItems?.length === 0" class="flex animation justify-center items-center min-h-[calc(100vh-200px)]">
-			<div
-				class="p-[50px] bg-gradient-to-t from-[#020817] to-[#0F172A]  flex justify-center border rounded font-bold text-[1.8rem] items-cetner">
-				<div>
-					Your Cart is Empty
+
+		<LayoutMessageBlock v-if="addedItems?.length === 0">
+			<template #content>
+				<div class="">
+					No Items Added
 				</div>
-			</div>
-		</div>
+				<NuxtLink to="/collection" class="font-light hover:underline cursor-pointer">
+					Go to Collection
+				</NuxtLink>
+			</template>
+		</LayoutMessageBlock>
+
 		<div v-if="addedItems" class="p-5 bg-gradient-to-b from-[#020817] to-[#0F172A] grid grid-cols-5 gap-4">
 			<div v-for="item in addedItems" :key="item.$id" class="animation">
 				<NuxtLink :to="item.isMan ? `/collection/itemMan/${item.$id}` : `/collection/itemWoman/${item.$id}`"

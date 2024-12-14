@@ -14,6 +14,10 @@ const orderDetailsStore = useOrderDetailsStore()
 
 <template>
 	<section v-if="addedItems?.length >= 1" id="order-form" class="w-full animation">
+		<div class="text-center font-bold text-[1.8rem] mb-5">
+				<h1>Your orders</h1>
+			</div>
+			
 		<div class="border bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5">
 			<div class="flex justify-center">
 				<div class="w-1/2">

@@ -7,6 +7,15 @@ const orderStore = useOrderDetailsStore()
 
 onMounted(() => {
 	calcTotal()
+
+	watch(
+		() => addedItems?.value, // Reactive source to watch
+		() => {
+			calcTotal(); // Recalculate total whenever addedItems changes
+		},
+		{ deep: true } // Ensures nested changes are detected if `addedItems` contains objects
+	);
+
 })
 
 const calcTotal = () => {

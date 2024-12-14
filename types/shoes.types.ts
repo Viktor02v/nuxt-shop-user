@@ -47,9 +47,16 @@ export interface ItemAdded{
 
 export interface ItemOrder{
 	userId:string
-	status:string
 	totalPrice:number
 	createdAt:string
+	status:string
+	userName:string
+	userCity:string
+	userNumber:string
+	deliveryMethod:string
+	paymentMethod:string
+	userCountry:string
+	userRegion:string
 }
 
 

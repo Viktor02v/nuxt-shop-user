@@ -78,7 +78,7 @@ const { activeStep, handleStepChange } = useStepNavigation();
 			:class="{ 'active': activeStep === 3, 'scale-100': activeStep !== 3 }"
 			class="w-full transition-all duration-500">
 			<h1 class="font-bold text-center mb-10 text-4xl">Make Order</h1>
-			<LayoutLandingPageInfoBlock3 imgSrc="/overview/to-orders.png">
+			<LayoutLandingPageInfoBlock3 imgSrc="/overview/to-orders.jpeg">
 				<template #content>
 					<p
 						class="self-start text-lg md:text-xl text-white font-light leading-relaxed bg-gradient-to-r from-[#020817] to-[#0F172A] p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out flex items-center">
