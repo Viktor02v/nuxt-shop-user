@@ -36,9 +36,26 @@ export const useOrderHandler = () =>{
 		orderDetailsStore.delivery = ''
 		orderDetailsStore.payment = ''
 	}
+
+// Function to validate required fields
+	const validateOrderFields = () => {
+		const { name, city, number } = userStore;
+		const { delivery, payment } = orderDetailsStore;
+	
+	// Check if any required fields are empty
+		if (!name || !city || !number || !delivery || !payment) {
+			alert("Please complete all the required fields.");
+			return false;
+		}
+		return true;
+	};
 	
 	const handleCreateOrder = async () => {
 		try {
+			if (!validateOrderFields()) {
+				return;
+			}
+
 			const items = addedItems?.value ?? [];
 			if (items.length === 0) {
 				alert("Your cart is empty.");
@@ -50,6 +67,8 @@ export const useOrderHandler = () =>{
 
 			const order = {
 				userName:userStore.name,
+				userCountry:userStore.country,
+				userRegion:userStore.region,
 				userCity:userStore.city,
 				userNumber:userStore.number,
 				deliveryMethod:orderDetailsStore.delivery,
@@ -62,7 +81,7 @@ export const useOrderHandler = () =>{
 
 			if (manItems.length > 0) await setItemsToNotAdded(manItems,COLLECTION_MAN );
 			if (womanItems.length > 0) await setItemsToNotAdded(womanItems, COLLECTION_WOMEN );
-			
+
 			createOrder(order);
 			alert("Order placed successfully!");
 			setClean();

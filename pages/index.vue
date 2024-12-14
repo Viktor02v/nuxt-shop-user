@@ -64,7 +64,7 @@ const { activeStep, handleStepChange } = useStepNavigation();
 				</template>
 				<template #button>
 					<UiButton
-						class="h-full text-white text-2xl bg-gradient-to-r from-[#020817] to-[#0F172A] hover:scale-105 transition-transform duration-300 ease-in-out">
+						class="text-white text-2xl bg-gradient-to-r from-[#020817] to-[#0F172A] hover:scale-105 transition-transform duration-300 ease-in-out">
 						<NuxtLink to="/cart" class="flex items-center gap-2">
 							<p>View Cart</p>
 							<Icon name="line-md:arrow-right" size="25" />

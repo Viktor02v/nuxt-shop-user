@@ -7,13 +7,10 @@ export function useCreateOrder() {
 	return useMutation({
 	mutationFn: async (order: any) => {
 		try {
-			// Remove orderId if it's included in the order data (Appwrite auto-generates it)
 			const { orderId, ...orderData } = order;
 
-			// Create the order in Appwrite (don't pass orderId as Appwrite will generate it)
 			const response = await DB.createDocument(DB_ID, COLLECTION_ORDERS, uuidv4(), orderData);
 
-			// Ensure the response has a valid $id (auto-generated orderId)
 			if (!response.$id) {
 			throw new Error("Failed to create order: Missing order ID");
 			}
