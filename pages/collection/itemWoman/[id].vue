@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useWomanShoe } from "@/composables/useWomanShoe"
 import { useGetWomenShoes } from '~/composables/useGetWomenShoes'
-
+import { useToggleFavoriteWoman } from '@/composables/useToggleFavoriteWoman'
+import { useToggleCartWoman } from '@/composables/useToggleCartWoman'
 
 const route = useRoute()
 const itemId = route.params.id as string;
@@ -9,6 +10,9 @@ const itemId = route.params.id as string;
 const { womanShoe, isLoading: isLoadingShoe, isError: isErrorShoe } = useWomanShoe(itemId)
 
 const { data: itemsWoman, isLoading, isError } = useGetWomenShoes()
+
+const toggleFavorite = useToggleFavoriteWoman();
+const toggleCart = useToggleCartWoman();
 </script>
 
 <template>
@@ -44,7 +48,32 @@ const { data: itemsWoman, isLoading, isError } = useGetWomenShoes()
 
 							<div class="mt-20 flex justify-end w-full ">
 								<div class="flex items-center">
-									<LayoutCollectionFavoriteCartButtonsWoman :item="womanShoe"/>
+									<LayoutCollectionFavoriteCardButtons>
+										<template #favorites>
+											<UiButton v-if="!womanShoe?.isFavorite"
+												@click.prevent="toggleFavorite.mutate(womanShoe)"
+												class="p-2 flex items-center text-white rounded-full bg-[#0d193c]">
+												<Icon name="mynaui:heart" size="25"
+													class="hover:scale-110 transition-all duration-400" />
+											</UiButton>
+											<UiButton v-else @click.prevent="toggleFavorite.mutate(womanShoe)"
+												class="p-2 flex items-center text-white rounded-full bg-[#0d193c]">
+												<Icon name="majesticons:heart" size="25"
+													class="hover:scale-110 transition-all text-red-600 duration-400" />
+											</UiButton>
+										</template>
+										<template #cart>
+											<UiButton v-if="!womanShoe?.isAdded" @click.prevent="toggleCart.mutate(womanShoe)"
+												class="p-2 flex items-center text-white rounded-full bg-[#0d193c]">
+												<Icon name="gg:add" size="26" class="hover:scale-110 transition-all duration-400" />
+											</UiButton>
+											<UiButton v-else @click.prevent="toggleCart.mutate(womanShoe)"
+												class="p-2 text-white transition-all duration-400 flex items-center rounded-full bg-[#0d193c]">
+												<Icon name="icons8:checked" size="26"
+													class="hover:scale-110 transition-all text-green-600 duration-400" />
+											</UiButton>
+										</template>
+									</LayoutCollectionFavoriteCardButtons>
 								</div>
 							</div>
 						</div>

@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/vue-query";
 import { COLLECTION_MAN, COLLECTION_WOMEN, DB_ID } from "~/app.constants";
 import { DB } from "~/lib/appwrite";
-import type { ItemFavorite } from "@/types/shoes.types";
+import type { ItemAdded } from "@/types/shoes.types";
 
 // Fetch items from two collections and merge them
-export function useGetFavorites() {
+export function useGetItemsCart() {
 	return useQuery({
-		queryKey: ['get-favorites'],
+		queryKey: ['get-added'],
 		queryFn: async () => {
 			// Fetch documents from both collections
 			const responseMan = await DB.listDocuments(DB_ID, COLLECTION_MAN);
@@ -18,13 +18,13 @@ export function useGetFavorites() {
 				...responseWomen.documents
 			];
 			
-			// Filter items where 'isFavorite' is true
-			const favoriteItems = mergedItems.filter(item => item.isFavorite === true);
-			return favoriteItems as unknown as ItemFavorite[];
+			// Filter items where 'isAdded' is true
+			const addedItems = mergedItems.filter(item => item.isAdded === true);
+			return addedItems as unknown as ItemAdded[];
 		},
 		select(data) {
 			// Optionally process the data if necessary
-			return data as ItemFavorite[];
+			return data as ItemAdded[];
 		},
 	});
 }
