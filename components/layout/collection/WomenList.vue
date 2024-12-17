@@ -35,7 +35,7 @@ const toggleCart = useToggleCartWoman();
 									<p class="underline font-light">{{ item.description }}</p>
 								</div>
 								<p class="">{{ item.vendor }}</p>
-								<p class="font-light">{{ item.price }}$</p>
+								<p class="font-light">{{ item.price }}UAN</p>
 								<span class="underline">Show more...</span>
 							</div>
 

@@ -35,7 +35,7 @@ const toggleCart = useToggleCartMan();
 								<p class="underline font-light">{{ item.description }};oi;oij;oij;o</p>
 							</div>
 							<p class="">{{ item.vendor }}</p>
-							<p class="font-light">{{ item.price }}$</p>
+							<p class="font-light">{{ item.price }}UAN</p>
 							<span class="underline">Show more...</span>
 						</div>
 

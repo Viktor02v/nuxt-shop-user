@@ -1,9 +1,10 @@
-import { useMutation } from "@tanstack/vue-query";
+import { useMutation, useQueryClient} from "@tanstack/vue-query";
 import { DB } from "~/lib/appwrite";
 import { DB_ID, COLLECTION_ORDERS} from "~/app.constants";
 import { v4 as uuidv4 } from "uuid";
 
 export function useCreateOrder() {
+	const queryClient = useQueryClient(); 
 	return useMutation({
 	mutationFn: async (order: any) => {
 		try {
@@ -21,7 +22,8 @@ export function useCreateOrder() {
 		}
 	},
 	onSuccess: (data) => {
-		console.log("Order created successfully:", data);
+		queryClient.invalidateQueries(["get-orders"]);
+		alert("Order created successfully:", data);
 	},
 	onError: (error) => {
 		console.error("Error creating order:", error);
