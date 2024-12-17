@@ -81,9 +81,8 @@ export const useOrderHandler = () =>{
 
 			if (manItems.length > 0) await setItemsToNotAdded(manItems,COLLECTION_MAN );
 			if (womanItems.length > 0) await setItemsToNotAdded(womanItems, COLLECTION_WOMEN );
-
+			confirm('Are you sure you want to create an order?')
 			createOrder(order);
-			alert("Order placed successfully!");
 			setClean();
 		} catch (error) {
 			console.error("Error creating order:", error);

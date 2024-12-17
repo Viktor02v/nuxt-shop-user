@@ -8,8 +8,9 @@ const { data: orders, isLoading, isError } = useGetOrders()
 	<section v-if="orders?.length >= 1" id="order-list"
 		class="border bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5">
 		<div>
-			<div>
-				<h2 class="text-center font-bold text-[1.8rem] mb-5">Order List</h2>
+			<div class="relative flex items-center justify-center">
+				<h2 class="font-bold text-[1.8rem] mb-5">Order List</h2>
+				<div class="absolute right-2 text-end flex rounded border hover:ring-2 hover:ring-indigo-700 p-2  transition-all duration-300 gap-2">Items:<span>{{ orders?.length }}</span></div>
 			</div>
 
 			<UiTable class="border rounded">
@@ -31,7 +32,7 @@ const { data: orders, isLoading, isError } = useGetOrders()
 						</UiTableHead>
 					</UiTableRow>
 				</UiTableHeader>
-				<UiTableBody v-for="order in orders" :key="order.$id" class="border-b">
+				<UiTableBody v-for="order in orders" :key="order.$id" class="border-b hover:ring-2 hover:ring-indigo-500 hover:scale-95   transition-all duration-500">
 					<UiTableRow>
 						<UiTableCell class="font-medium">
 							{{ order.userId }}
@@ -66,5 +67,4 @@ const { data: orders, isLoading, isError } = useGetOrders()
 
 
 
-<style scoped>
-</style>
+<style scoped></style>
