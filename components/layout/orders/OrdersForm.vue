@@ -13,7 +13,7 @@ const orderDetailsStore = useOrderDetailsStore()
 </script>
 
 <template>
-	<section v-if="addedItems?.length >= 1" id="order-form" class="w-full animation">
+	<section v-if="addedItems && addedItems?.length >= 1" id="order-form" class="w-full animation">
 		<div class="text-center font-bold text-[1.8rem] mb-5">
 			<h1>Your orders</h1>
 		</div>

@@ -12,6 +12,12 @@ const menuStore = useMenuStore()
 			<Icon :name="item.icon" />
 			<span>{{ item.name }}</span>
 		</NuxtLink>
+
+		<a href="https://nuxt-shop-crm02v.netlify.app" target="_blank"
+			class="text-[20px] flex my-5 pl-3 items-center text-white hover:text-red-500 transition easy-in-out gap-[30px] md:gap-[60px] md:text-3xl">
+			<Icon name="dashicons:admin-network" />
+			<span>Admin</span>
+		</a>
 	</div>
 </template>
 
