@@ -5,7 +5,7 @@ const { data: orders, isLoading, isError } = useGetOrders()
 </script>
 
 <template>
-	<section v-if="orders?.length >= 1" id="order-list"
+	<section v-if="orders && orders?.length >= 1" id="order-list"
 		class="border bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5">
 		<div>
 			<div class="relative flex items-center justify-center">
