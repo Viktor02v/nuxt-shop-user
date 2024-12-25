@@ -27,9 +27,10 @@ const toggleCart = useToggleCartMan();
 			<div v-for="item in sortedShoes" :key="item.$id" class="">
 				<NuxtLink :to="`/collection/itemMan/${item.$id}`"
 					class="border animation hover:md:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
-					<div class="flex flex-col">
+					<div class="flex flex-col w-full">
 						<div class=" min-h-[220px] max-h-[220px] overflow-hidden p-5 md:p-0 lg:p-0  xl:p-0 flex flex-col  justify-center">
-							<img :src="item.foto_url" width="400" class="mb-4 rounded" />
+							<NuxtImg v-if="item.foto_url" :src="item.foto_url" width="400" class=" mb-4 rounded"
+								:alt="item.name" />
 						</div>
 
 						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 mt-10 md:mt-0 lg:mt-0 xl:mt-0 flex-col">
