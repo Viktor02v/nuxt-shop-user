@@ -20,7 +20,7 @@ const toggleCart = (item: any) => {
 </script>
 
 <template>
-	<div class="">
+	<div class="bg-gradient-to-b from-[#020817] to-[#0F172A] h-screen">
 		<div v-if="isLoading">
 			Is Loading....
 		</div>
@@ -36,18 +36,18 @@ const toggleCart = (item: any) => {
 			</template>
 		</LayoutMessageBlock>
 
-		<div v-if="favoriteItems" class="p-5 bg-gradient-to-b from-[#020817] to-[#0F172A] grid grid-cols-5 gap-4">
+		<div v-if="favoriteItems" class="p-5  pr-[50px] sm:pr-0 md:pr-0 lg:pr-0 xl:pr-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 			<div v-for="item in favoriteItems" :key="item.$id" class="animation">
 				<NuxtLink :to="item.isMan ? `/collection/itemMan/${item.$id}` : `/collection/itemWoman/${item.$id}`"
-					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
+					class="border animation hover:md:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
-						<div class=" min-h-[220px] flex flex-col  justify-center">
-							<img :src="item.foto_url" width="200" class="mb-4 bg-[#060D1D] rounded" />
+						<div class=" min-h-[220px] max-h-[220px] overflow-hidden p-5 md:p-0 lg:p-0  xl:p-0 flex flex-col  justify-center">
+							<NuxtImg :src="item.foto_url" width="400" class="mb-4 bg-[#060D1D] rounded" />
 						</div>
 
-						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
+						<div class="flex h-[190px] overflow-y-auto mt-10 md:mt-0 lg:mt-0 xl:mt-0 gap-1 mb-2 flex-col">
 							<p class="text-[1.3rem] ">{{ item.name }}</p>
-							<div class="w-[100px] overflow-auto text-nowrap">
+							<div class="w-[200px] md:w-[100px] overflow-auto text-nowrap">
 								<p class="underline font-light">{{ item.description }}</p>
 							</div>
 							<p class="">{{ item.vendor }}</p>
