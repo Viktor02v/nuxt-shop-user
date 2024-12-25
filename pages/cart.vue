@@ -10,7 +10,7 @@ const { data: addedItems, isLoading, isError: isErrorCart } = useGetItemsCart();
 
 			<LayoutCartList />
 
-			<div v-if="addedItems?.length >= 1">
+			<div v-if="addedItems && addedItems?.length >= 1">
 				<div class="text-center mt-8">
 					<NuxtLink to="/orders">
 						<UiButton class="px-6 py-3 text-white bg-green-500 rounded hover:bg-green-600" type="button">
