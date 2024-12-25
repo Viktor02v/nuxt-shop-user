@@ -4,6 +4,9 @@ import { useFilterStore } from '@/store/filterbar.store';
 import { useFilteredShoes } from '@/composables/useFilteredShoes';
 import { useToggleFavoriteMan } from '@/composables/useToggleFavoriteMan'
 import { useToggleCartMan } from '@/composables/useToggleCartMan'
+import { useAdaptiveStore } from '@/store/adaptive.store';
+
+const adaptiveStore = useAdaptiveStore();
 
 const filterStore = useFilterStore();
 
@@ -20,18 +23,18 @@ const toggleCart = useToggleCartMan();
 		<div v-if="isLoading">
 			Is Loading....
 		</div>
-		<div v-if="itemsMan" class="p-5 grid grid-cols-5 gap-4">
+		<div v-if="itemsMan" class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-4 ">
 			<div v-for="item in sortedShoes" :key="item.$id" class="">
 				<NuxtLink :to="`/collection/itemMan/${item.$id}`"
 					class="border animation hover:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 					<div class="flex flex-col">
-						<div class=" min-h-[220px] flex flex-col  justify-center">
-							<img :src="item.foto_url" width="200" class="mb-4 bg-[#060D1D] rounded" />
+						<div class=" min-h-[220px] max-h-[220px] overflow-hidden p-5 md:p-0 lg:p-0  xl:p-0 flex flex-col  justify-center">
+							<img :src="item.foto_url" width="400" class="mb-4 bg-[#060D1D] rounded" />
 						</div>
 
-						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
+						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 mt-10 md:mt-0 lg:mt-0 xl:mt-0 flex-col">
 							<p class="text-[1.3rem] ">{{ item.name }}</p>
-							<div class="w-[100px] overflow-auto text-nowrap">
+							<div class="w-[200px] md:w-[100px] overflow-auto text-nowrap">
 								<p class="underline font-light">{{ item.description }};oi;oij;oij;o</p>
 							</div>
 							<p class="">{{ item.vendor }}</p>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useStepperStore } from "@/store/stepper.store"
 import { useStepNavigation } from "@/components/layout/landingPage/useStepNavigation";
+
 useSeoMeta({
 	title: 'Overview | Nuxt-Shop'
 })
 const { activeStep, handleStepChange } = useStepNavigation();
+
 </script>
 
 <template>

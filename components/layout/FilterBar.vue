@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { useFilterStore } from '@/store/filterbar.store'
+import { useAdaptiveStore } from '@/store/adaptive.store';
+
+const adaptiveStore = useAdaptiveStore();
+
 const filterStore = useFilterStore();
 
 const toggleFilter = () => filterStore.toggleMenu();
@@ -9,14 +13,22 @@ const setSortMode = (mode: 'cheapest' | 'expensive') => {
 };
 
 const setVendor = (vendor: string | null) => {
-	filterStore.setVendor(vendor); // Call the store action
+	filterStore.setVendor(vendor);
 };
 
 const clearFilters = () => filterStore.setClear();
+
+onMounted(() => {
+	adaptiveStore.initializeListener();
+});
+
+onUnmounted(() => {
+	adaptiveStore.removeListener();
+});
 </script>
 
 <template>
-	<aside :class="{
+	<aside v-if="!adaptiveStore.isMobile" :class="{
 		'translate-x-0': filterStore.isFilterOpen,
 		'translate-x-[0px] md:translate-x-[-300px]': !filterStore.isFilterOpen
 	}"
