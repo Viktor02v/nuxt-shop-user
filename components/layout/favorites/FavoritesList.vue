@@ -30,7 +30,7 @@ const toggleCart = (item: any) => {
 				<div class="">
 					No Favorites Choosen
 				</div>
-				<NuxtLink to="/collection" class="font-light hover:underline cursor-pointer">
+				<NuxtLink to="/collection" class="font-light underline cursor-pointer">
 					Go to Collection
 				</NuxtLink>
 			</template>
