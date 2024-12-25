@@ -42,7 +42,7 @@ const toggleCart = (item: any) => {
 							<NuxtImg v-if="item.foto_url" :src="item.foto_url || '/logo.png'" width="400" class="mb-4 rounded"
 								:alt="item.name" />
 
-								<NuxtImg src="/logo.png" width="400" class="mb-4 rounded"
+								<NuxtImg v-else src="/logo.png" width="400" class="mb-4 rounded"
 								:alt="item.name" />
 						</div>
 
