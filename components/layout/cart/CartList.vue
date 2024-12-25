@@ -41,9 +41,9 @@ const toggleCart = (item: any) => {
 							class="min-h-[220px] max-h-[220px] overflow-hidden p-5 md:p-0 lg:p-0 xl:p-0 flex flex-col justify-center">
 							<NuxtImg v-if="item.foto_url" :src="item.foto_url || '/logo.png'" width="400" class="mb-4 rounded"
 								:alt="item.name" />
-							<div v-else class="h-full w-full flex items-center justify-center text-gray-500">
-								No Image Available
-							</div>
+
+								<NuxtImg v-else src="/logo.png" width="400" class="mb-4 rounded"
+								:alt="item.name" />
 						</div>
 
 						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
