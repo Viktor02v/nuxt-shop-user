@@ -45,9 +45,9 @@ const toggleCart = (item: any) => {
 							<NuxtImg :src="item.foto_url" width="400" class="mb-4  rounded" />
 						</div>
 
-						<div class="flex h-[190px] overflow-y-auto mt-10 md:mt-0 lg:mt-0 xl:mt-0 gap-1 mb-2 flex-col">
+						<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 flex-col">
 							<p class="text-[1.3rem] ">{{ item.name }}</p>
-							<div class="w-[200px] md:w-[100px] overflow-auto text-nowrap">
+							<div class="w-[100px] overflow-auto text-nowrap">
 								<p class="underline font-light">{{ item.description }}</p>
 							</div>
 							<p class="">{{ item.vendor }}</p>
