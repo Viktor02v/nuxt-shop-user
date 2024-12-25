@@ -1,12 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useStepNavigation } from "@/components/layout/landingPage/useStepNavigation";
+import { useAdaptiveStore } from '@/store/adaptive.store';
+
+const adaptiveStore = useAdaptiveStore();
 
 const { handleStepChange } = useStepNavigation();
+
+
+onMounted(() => {
+	adaptiveStore.initializeListener();
+});
+
+onUnmounted(() => {
+	adaptiveStore.removeListener();
+});
 </script>
 
 <template>
-	<section id="" class="fixed left-5 top-60 flex items-center justify-center">
+	<section v-if="!adaptiveStore.isMobile" id="" class="fixed left-5 top-60 flex items-center justify-center">
 		<UiStepper class="flex flex-col items-center gap-10">
 			<UiStepperItem :step="1">
 				<UiStepperTrigger @click="handleStepChange(1)">
@@ -35,5 +46,4 @@ const { handleStepChange } = useStepNavigation();
 	</section>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
