@@ -26,7 +26,7 @@ const toggleCart = useToggleCartWoman();
 						class="border animation hover:md:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 						<div class="flex flex-col">
 							<div class=" min-h-[220px] max-h-[220px] overflow-hidden flex flex-col p-5 md:p-0 lg:p-0  xl:p-0 justify-center">
-								<NuxtImg :src="item.foto_url" width="400" class="mb-4   bg-[#060D1D] rounded" />
+								<NuxtImg :src="item.foto_url" width="400" class="mb-4  rounded" />
 							</div>
 
 							<div class="flex h-[190px] overflow-y-auto gap-1 mb-2 mt-10 md:mt-0 lg:mt-0 xl:mt-0 flex-col">
