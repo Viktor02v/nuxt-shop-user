@@ -1,14 +1,25 @@
 <script setup lang="ts">
 import { useMenuStore } from '@/store/menu.store';
+import { useAdaptiveStore } from '@/store/adaptive.store';
+
+const adaptiveStore = useAdaptiveStore();
 const menuStore = useMenuStore()
 
 const toggleMenu = () => {
 	menuStore.toggleMenu()
 }
+
+onMounted(() => {
+	adaptiveStore.initializeListener();
+});
+
+onUnmounted(() => {
+	adaptiveStore.removeListener();
+});
 </script>
 
 <template>
-	<aside :class="{
+	<aside v-if="!adaptiveStore.isMobile" :class="{
 		'translate-x-0': menuStore.isMenuOpen,
 		'translate-x-[150px] md:translate-x-[250px]': !menuStore.isMenuOpen
 	}"
