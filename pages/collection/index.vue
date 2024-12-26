@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+
 </script>
 
 <template>
@@ -11,17 +12,19 @@
 		<LayoutFilterBar />
 
 
-		<section id="man-section" class="w-full mb-10">
-			<h1 class="text-[1.8rem] py-5 md:py-0 font-bold border-b pb-3 text-center">For Man</h1>
-
+		<div id="man-section" class="w-full mb-10">
+			<div class="relative">
+				<h1 class="text-[1.8rem] py-5 md:py-0 font-bold border-b pb-3 text-center">For Man</h1>
+				<LayoutCollectionViewButtons/>
+			</div>
 			<LayoutCollectionManList />
-		</section>
+		</div>
 
-		<section id="women-section" class="w-full">
-			<h1 class="text-[1.8rem] py-5 md:py-0 font-bold border-b pb-3 text-center">For Women</h1>
+		<div id="women-section" class="w-full">
+			<h1 class="text-[1.8rem] py-5 md:py-0 font-bold border-b pb-3 text-center">For Woman</h1>
 
 			<LayoutCollectionWomenList />
-		</section>
+		</div>
 	</div>
 </template>
 
