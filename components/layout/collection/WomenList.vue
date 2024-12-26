@@ -4,12 +4,16 @@ import { useFilterStore } from '@/store/filterbar.store';
 import { useFilteredShoes } from '@/composables/useFilteredShoes';
 import { useToggleFavoriteWoman } from '@/composables/useToggleFavoriteWoman'
 import { useToggleCartWoman } from '@/composables/useToggleCartWoman'
+import { useAdaptiveStore } from '@/store/adaptive.store';
+
+
 
 const { data: itemsWomen, isLoading: isLoadingWomen, isError: isErrorWomen } = useGetWomenShoes()
 const filterStore = useFilterStore();
 
 const { sortedShoes } = useFilteredShoes(itemsWomen, isLoadingWomen, isErrorWomen, filterStore);
 
+const adaptiveStore = useAdaptiveStore();
 const toggleFavorite = useToggleFavoriteWoman();
 const toggleCart = useToggleCartWoman();
 </script>
@@ -18,14 +22,17 @@ const toggleCart = useToggleCartWoman();
 		<div v-if="isLoadingWomen">
 			Is Loading....
 		</div>
-		<div v-if="itemsWomen" class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+		<div v-if="itemsWomen" :class="[adaptiveStore.isRows && adaptiveStore.isMobile ? 'grid-cols-2' : '', 'p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-4']">
 
 			<div v-for="item in sortedShoes" :key="item.$id" class="">
 				<NuxtLink :to="`/collection/itemWoman/${item.$id}`">
 					<div
 						class="border animation hover:md:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center">
 						<div class="flex flex-col w-full">
-							<div class=" min-h-[220px] max-h-[220px] overflow-hidden flex flex-col p-5 md:p-0 lg:p-0  xl:p-0 justify-center">
+							<div :class="[
+							'overflow-hidden p-5 md:p-0 lg:p-0 xl:p-0 flex flex-col justify-center',
+							adaptiveStore.isRows && adaptiveStore.isMobile ? 'min-h-[120px] max-h-[120px]' : 'min-h-[220px] max-h-[220px]'
+						]">
 								<NuxtImg v-if="item.foto_url" :src="item.foto_url" width="400" class=" mb-4 rounded"
 								:alt="item.name" />
 							</div>
