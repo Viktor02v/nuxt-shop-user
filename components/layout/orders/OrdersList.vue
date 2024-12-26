@@ -10,7 +10,7 @@ const { data: orders, isLoading, isError } = useGetOrders()
 		<div>
 			<div class="relative flex items-center justify-center">
 				<h2 class="font-bold text-[1.8rem] mb-5">Order List</h2>
-				<div class="absolute right-2 text-end flex rounded border hover:ring-2 hover:ring-indigo-700 p-2  transition-all duration-300 gap-2">Items:<span>{{ orders?.length }}</span></div>
+				<div class="absolute md:right-2 right-0 top-0 text-end flex rounded border hover:ring-2 hover:ring-indigo-700 p-2  transition-all duration-300 gap-2">Items:<span>{{ orders?.length }}</span></div>
 			</div>
 
 			<UiTable class="border rounded">
