@@ -5,7 +5,7 @@ import { MENU_DATA } from '~/components/layout/sidebar/menu.data'
 const adaptiveStore = useAdaptiveStore();
 </script>
 <template>
-<div v-if="adaptiveStore.isMobile" class="fixed w-[390px] top-[80px] bg-gradient-to-b from-[#020817] to-[#0F172A] px-5  z-10">
+<div v-if="adaptiveStore.isMobile" class="fixed w-[100vw] top-[80px] bg-gradient-to-b from-[#020817] to-[#0F172A] px-5  z-10">
 	<div class="flex items-center justify-between py-3">
 		<NuxtLink :to="item.url" v-for="item in MENU_DATA " :key="item.name" @click="toggleMenu"
 			class="text-[25px] flex items-center text-white hover:text-red-500 transition easy-in-out ">
