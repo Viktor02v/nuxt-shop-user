@@ -20,9 +20,9 @@ const orderDetailsStore = useOrderDetailsStore()
 
 		<div class="border bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5">
 			<div class="flex justify-center">
-				<div class="w-1/2">
+				<div class="md:w-1/2 w-full">
 					<div class="mb-10">
-						<div class="mb-1 text-left">
+						<div class="mb-1 text-center">
 							<h2 class="font-light text-[1.5rem]">Form Assignment:</h2>
 						</div>
 						<form class="flex flex-col gap-2">
