@@ -8,7 +8,7 @@ const menuStore = useMenuStore();
 <template>
 	<div>
 		<!-- <LayoutLoader v-if="loadingStore.isLoading" /> -->
-		<section class=" relative w-[390px] md:w-[380px] h-[100vh]">
+		<section class=" relative w-[100vw] md:w-[100vw] h-[100vh]">
 			<LayoutTopNav />
 			<LayoutSidebar />
 			<LayoutSidebarMobileBar/>

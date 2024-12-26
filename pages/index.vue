@@ -18,7 +18,7 @@ const { activeStep, handleStepChange } = useStepNavigation();
 		<LayoutStepper />
 
 		<section id="step-1" :class="{ 'active': activeStep === 1, 'scale-100': activeStep !== 1 }"
-			class="w-full mb-[80px] transition-all duration-500 ease-in-out pb-5 md:pb-0 md:scroll-mt-[100px]">
+			class="w-full md:mb-[80px] transition-all duration-500 ease-in-out md:pb-5 md:pb-0 md:scroll-mt-[100px]">
 			<h1 class="font-bold text-center mb-5 md:mb-10 pt-5 md:pt-0 text-2xl md:text-4xl">Go to Collections</h1>
 			<LayoutLandingPageInfoBlock imgSrc="/overview/to-collection.jpeg">
 				<template #content>
@@ -45,7 +45,7 @@ const { activeStep, handleStepChange } = useStepNavigation();
 
 		<section id="step-2"
 			:class="{ 'active': activeStep === 2, 'scale-100': activeStep !== 2 }"
-			class="w-full mb-[80px] transition-all duration-500 pb-5 md:pb-0  md:scroll-mt-[150px]">
+			class="w-full md:mb-[80px] transition-all duration-500 md:pb-5 md:pb-0  md:scroll-mt-[150px]">
 			<h1 class="font-bold text-center mb-5 md:mb-10 pt-5 md:pt-0 text-2xl md:text-4xl">Check Your Cart</h1>
 			<LayoutLandingPageInfoBlock2 imgSrc="/overview/to-cart.png">
 				<template #content>
