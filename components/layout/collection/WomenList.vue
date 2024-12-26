@@ -18,7 +18,7 @@ const toggleCart = useToggleCartWoman();
 		<div v-if="isLoadingWomen">
 			Is Loading....
 		</div>
-		<div v-if="itemsWomen" class="p-5 pr-[50px] sm:pr-0 md:pr-0 lg:pr-0 xl:pr-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+		<div v-if="itemsWomen" class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 
 			<div v-for="item in sortedShoes" :key="item.$id" class="">
 				<NuxtLink :to="`/collection/itemWoman/${item.$id}`">

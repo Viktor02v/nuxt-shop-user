@@ -32,7 +32,7 @@ const toggleCart = (item: any) => {
 		</LayoutMessageBlock>
 
 		<div v-if="addedItems"
-			class="p-5 pr-[50px] sm:pr-0 md:pr-0 lg:pr-0 xl:pr-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+			class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 			<div v-for="item in addedItems" :key="item.$id" class="animation">
 				<NuxtLink :to="item.isMan ? `/collection/itemMan/${item.$id}` : `/collection/itemWoman/${item.$id}`"
 					class="border animation hover:md:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center bg-gradient-to-t from-[#020817] to-[#0F172A]">
