@@ -22,14 +22,14 @@ const toggleCart = useToggleCartWoman();
 			<section class="w-full">
 				<div class="border h-full p-5">
 					<h1 class="text-center font-bold mb-10 border-b pb-5 text-[1.8rem]">{{ womanShoe?.name }}</h1>
-					<div class="w-full flex gap-5 item-center">
+					<div class="w-full flex flex-wrap md:flex-nowrap justify-center gap-5 item-center">
 						<div
-							class="border rounded overflow-hidden flex items-center justify-center hover:scale-105 transition-all duration-500 bg-gradient-to-t from-[#020817] to-[#0F172A] w-1/2 h-[400px]">
-							<NuxtImg :src="womanShoe?.foto_url" class="" alt="" />
+							class="border w-full rounded overflow-hidden flex items-center justify-center hover:scale-105 transition-all duration-500 bg-gradient-to-t from-[#020817] to-[#0F172A] md:w-1/2 h-[400px]">
+							<NuxtImg :src="womanShoe.foto_url" class="" :alt="womanShoe.name" />
 						</div>
 
 						<div
-							class="w-1/2 overflow-y-auto bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-3 transition-all h-[400px] duration-500 hover:scale-105 hover:border">
+							class="md:w-1/2 w-full overflow-y-auto bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-3 transition-all h-[400px] duration-500 hover:scale-105 hover:border">
 							<!-- Description -->
 							<h2 class="text-center font-bold text-[1.5rem] border-b pb-3">Characteristics</h2>
 							<ul class="mt-3 flex flex-col break-words gap-2">
@@ -40,7 +40,7 @@ const toggleCart = useToggleCartWoman();
 								<li class="text-[1.3rem] font-light border-b flex items-center gap-2">Price: <span
 										class='font-thin text-[1.1rem]'>{{ womanShoe?.price }}</span> <span>UAN</span></li>
 								<li class="text-[1.3rem] font-light border-b flex flex-col items-start gap-2">Description:
-									<span class='font-thin text-[1.1rem] break-words'>
+									<span class='font-thin text-[1.1rem] w-full break-words'>
 										{{ womanShoe?.description }}
 									</span>
 								</li>
