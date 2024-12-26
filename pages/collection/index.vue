@@ -11,11 +11,10 @@
 
 		<LayoutFilterBar />
 
-
 		<div id="man-section" class="w-full mb-10">
 			<div class="relative">
 				<h1 class="text-[1.8rem] py-5 md:py-0 font-bold border-b pb-3 text-center">For Man</h1>
-				<LayoutCollectionViewButtons/>
+				<LayoutCollectionViewButtons />
 			</div>
 			<LayoutCollectionManList />
 		</div>

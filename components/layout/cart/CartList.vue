@@ -2,6 +2,10 @@
 import { useToggleCartMan } from '@/composables/useToggleCartMan'
 import { useToggleCartWoman } from '@/composables/useToggleCartWoman'
 import { useGetItemsCart } from "@/composables/useGetItemsCart"
+
+import { useAdaptiveStore } from '@/store/adaptive.store';
+
+const adaptiveStore = useAdaptiveStore();
 const { data: addedItems, isLoading, isError } = useGetItemsCart();
 
 const toggleCartMan = useToggleCartMan();
@@ -32,13 +36,16 @@ const toggleCart = (item: any) => {
 		</LayoutMessageBlock>
 
 		<div v-if="addedItems"
-			class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+		:class="[adaptiveStore.isRows && adaptiveStore.isMobile ? 'grid-cols-2' : '', 'p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-4']">
 			<div v-for="item in addedItems" :key="item.$id" class="animation">
 				<NuxtLink :to="item.isMan ? `/collection/itemMan/${item.$id}` : `/collection/itemWoman/${item.$id}`"
 					class="border animation hover:md:scale-105 transition-all duration-500 rounded py-5 px-2 flex flex-col items-center bg-gradient-to-t from-[#020817] to-[#0F172A]">
 					<div class="flex flex-col w-full">
 						<div
-							class="min-h-[220px] max-h-[220px] overflow-hidden p-5 md:p-0 lg:p-0 xl:p-0 flex flex-col justify-center">
+						:class="[
+							'overflow-hidden p-5 md:p-0 lg:p-0 xl:p-0 flex flex-col justify-center',
+							adaptiveStore.isRows && adaptiveStore.isMobile ? 'min-h-[120px] max-h-[120px]' : 'min-h-[220px] max-h-[220px]'
+						]">
 							<NuxtImg v-if="item.foto_url" :src="item.foto_url" width="400" class=" mb-4 rounded"
 								:alt="item.name" />
 						</div>
