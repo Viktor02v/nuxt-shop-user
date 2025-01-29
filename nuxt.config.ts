@@ -26,4 +26,7 @@ shadcn: {
 pinia:{
 	storesDirs:['./store/**'],
 },
+image: {
+	domains: ['cloud.appwrite.io']
+}
 })
